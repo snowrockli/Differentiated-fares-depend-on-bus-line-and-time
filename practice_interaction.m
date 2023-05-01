@@ -1,70 +1,40 @@
-%============braessÂ·Íø¶àÖ÷Ìå½»»¥===============
+%============braessè·¯ç½‘å¤šä¸»ä½“äº¤äº’===============
 clc
 clear
 close all
-OD=xlsread('braess.xlsx','sheet1');%ODĞèÇó¾ØÕó
-TT=xlsread('braess.xlsx','sheet2');%Õ¾µã¼äÔËĞĞÊ±¼ä¾ØÕó
-Dis=xlsread('braess.xlsx','sheet3');%Õ¾µã¼ä¾àÀë¾ØÕó
+OD=xlsread('braess.xlsx','sheet1');%ODéœ€æ±‚çŸ©é˜µ
+TT=xlsread('braess.xlsx','sheet2');%ç«™ç‚¹é—´è¿è¡Œæ—¶é—´çŸ©é˜µ
+Dis=xlsread('braess.xlsx','sheet3');%ç«™ç‚¹é—´è·ç¦»çŸ©é˜µ
 t=1;
 t_T=10;
-interact_S=15;%½»»¥·¶Î§
-N_agent_length=100;%ODÄÚÔª°û¿Õ¼ä±ß³¤
-M=5;%Ã¿Ìì5¸ö³ö·¢Ê±¿Ì
-tte=20;%Ôçµ½Ê±¼ä
-tta=60;%ÉÏ°àÊ±¼ä
-theita=0.7;%Ğ§ÓÃ¸ĞÖªÏµÊı
-kesei=0.2;%Ğ§ÓÃÏµÊı
-theita_l=0.2;%ºó»ÚÑá¶ñË®Æ½
-capacity=100;%Óµ¼·ãĞÖµ
-capacity_bus=100;%¹«½»¶¨Ô±
-%==============ÏßÂ·=============
+interact_S=15;%äº¤äº’èŒƒå›´
+N_agent_length=100;%ODå†…å…ƒèƒç©ºé—´è¾¹é•¿
+M=5;%æ¯å¤©5ä¸ªå‡ºå‘æ—¶åˆ»
+tte=20;%æ—©åˆ°æ—¶é—´
+tta=60;%ä¸Šç­æ—¶é—´
+theita=0.7;%æ•ˆç”¨æ„ŸçŸ¥ç³»æ•°
+kesei=0.2;%æ•ˆç”¨ç³»æ•°
+theita_l=0.2;%åæ‚”åŒæ¶æ°´å¹³
+capacity=100;%æ‹¥æŒ¤é˜ˆå€¼
+capacity_bus=100;%å…¬äº¤å®šå‘˜
+%==============çº¿è·¯=============
 route(1,:)=[1,2,3,6];
 route(2,:)=[4,5,2,3];
 route(3,:)=[1,4,5,6];
-%==============Ò»Æ±ÖÆ=============
-% p_route(1,1)=0.5;p_route(1,2)=0.5;p_route(1,3)=0.5;p_route(1,4)=0.5;p_route(1,5)=0.5;
-% p_route(2,1)=0.5;p_route(2,2)=0.5;p_route(2,3)=0.5;p_route(2,4)=0.5;p_route(2,5)=0.5;
-% p_route(3,1)=0.5;p_route(3,2)=0.5;p_route(3,3)=0.5;p_route(3,4)=0.5;p_route(3,5)=0.5;
-% p_park(1)=14.5485;p_park(2)=13.3904;p_park(3)=14.3227;p_park(4)=13.1489;p_park(5)=13.9455;%Í£³µ·Ñ
-% %=============·¢³µÆµÂÊ============
-% f_route(1)=6.5;
-% f_route(2)=6.5;
-% f_route(3)=6.5;
-% [num_station,~]=size(OD);%Õ¾µãÊıÁ¿
-%===================S1==================
-% p_route(1,1)=0.8363;p_route(1,2)=0.6187;p_route(1,3)=0.9178;p_route(1,4)=0.5361;p_route(1,5)=0.8272;
-% p_route(2,1)=0.6662;p_route(2,2)=0.5677;p_route(2,3)=0.5547;p_route(2,4)=0.7394;p_route(2,5)=0.6452;
-% p_route(3,1)=0.8036;p_route(3,2)=0.7206;p_route(3,3)=0.7939;p_route(3,4)=0.9541;p_route(3,5)=0.6532;
-% p_park(1)=14.5485;p_park(2)=13.3904;p_park(3)=14.3227;p_park(4)=13.1489;p_park(5)=13.9455;%Í£³µ·Ñ
-% %=============·¢³µÆµÂÊ============
-% f_route(1)=8.1573;
-% f_route(2)=4.2869;
-% f_route(3)=4.3935;
-% [num_station,~]=size(OD);%Õ¾µãÊıÁ¿
-%==============S3=============
-p_route(1,1)=0.8206;p_route(1,2)=0.9855;p_route(1,3)=0.5739;p_route(1,4)=0.9172;p_route(1,5)=0.5673;
-p_route(2,1)=0.8735;p_route(2,2)=0.8285;p_route(2,3)=0.8362;p_route(2,4)=0.9968;p_route(2,5)=0.9226;
-p_route(3,1)=0.7126;p_route(3,2)=0.6834;p_route(3,3)=0.9142;p_route(3,4)=0.6178;p_route(3,5)=0.6532;
-p_park(1)=14.8155;p_park(2)=13.4649;p_park(3)=13.3287;p_park(4)=13.2043;p_park(5)=13.4900;%Í£³µ·Ñ
-%=============·¢³µÆµÂÊ============
-f_route(1)=4.1880;
-f_route(2)=4.2008;
-f_route(3)=4.3935;
-[num_station,~]=size(OD);%Õ¾µãÊıÁ¿
-%==============S5=============
-% p_route(1,1)=0.8112;p_route(1,2)=0.9855;p_route(1,3)=0.8397;p_route(1,4)=0.9470;p_route(1,5)=0.5673;
-% p_route(2,1)=0.8735;p_route(2,2)=0.8285;p_route(2,3)=0.8362;p_route(2,4)=0.9968;p_route(2,5)=0.9226;
-% p_route(3,1)=0.7126;p_route(3,2)=0.6867;p_route(3,3)=0.9142;p_route(3,4)=0.6178;p_route(3,5)=0.6498;
-% p_park(1)=14.7777;p_park(2)=13.4731;p_park(3)=13.3287;p_park(4)=13.3319;p_park(5)=13.4900;%Í£³µ·Ñ
-% %=============·¢³µÆµÂÊ============
-% f_route(1)=3.4910;
-% f_route(2)=4.2008;
-% f_route(3)=4.3437;
-% [num_station,~]=size(OD);%Õ¾µãÊıÁ¿
-%===========================Â·Íø¼°ÏßÂ·³õÊ¼»¯===============
+%==============ä¸€ç¥¨åˆ¶=============
+p_route(1,1)=0.5;p_route(1,2)=0.5;p_route(1,3)=0.5;p_route(1,4)=0.5;p_route(1,5)=0.5;
+p_route(2,1)=0.5;p_route(2,2)=0.5;p_route(2,3)=0.5;p_route(2,4)=0.5;p_route(2,5)=0.5;
+p_route(3,1)=0.5;p_route(3,2)=0.5;p_route(3,3)=0.5;p_route(3,4)=0.5;p_route(3,5)=0.5;
+p_park(1)=14.5485;p_park(2)=13.3904;p_park(3)=14.3227;p_park(4)=13.1489;p_park(5)=13.9455;%åœè½¦è´¹
+%=============å‘è½¦é¢‘ç‡============
+f_route(1)=6.5;
+f_route(2)=6.5;
+f_route(3)=6.5;
+[num_station,~]=size(OD);%ç«™ç‚¹æ•°é‡
+%===========================è·¯ç½‘åŠçº¿è·¯åˆå§‹åŒ–===============
 for i=1:num_station
     for j=1:num_station
-        cell{i,j}.route_num=0;%ÏßÂ·ÊıÁ¿
+        cell{i,j}.route_num=0;%çº¿è·¯æ•°é‡
         cell{i,j}.route=[];
         cell{i,j}.route_length=[];
         cell{i,j}.travel_time_0=[];
@@ -86,80 +56,80 @@ for i=1:num_station
         cell{i,j}.wr=[];
         cell{i,j}.wd=[];
         cell{i,j}.friend=[];
-        %=========È·¶¨Ã¿¸öOD¼äÏßÂ·ÊıÁ¿ÓëÃû³Æ============
+        %=========ç¡®å®šæ¯ä¸ªODé—´çº¿è·¯æ•°é‡ä¸åç§°============
         for k=1:3
             if ismember(i,route(k,:))&&ismember(j,route(k,:))&&(i~=j)
                 cell{i,j}.route_num=cell{i,j}.route_num+1;
-                cell{i,j}.route=[cell{i,j}.route,k];%Ìí¼ÓÏßÂ·Ãû³Æ
-                cell{i,j}.i_locate(cell{i,j}.route_num,1)=find(ismember(route(k,:),i));%¶¨Î»ÆğµãÔÚÏßÂ·ÖĞµÄÎ»ÖÃ
-                cell{i,j}.j_locate(cell{i,j}.route_num,1)=find(ismember(route(k,:),j));%¶¨Î»ÖÕµãÔÚÏßÂ·ÖĞµÄÎ»ÖÃ
-                if cell{i,j}.i_locate(cell{i,j}.route_num,1)<cell{i,j}.j_locate(cell{i,j}.route_num,1)%·½Ïò
-                    cell{i,j}.direction(cell{i,j}.route_num,1)=1;%ÉÏĞĞ
+                cell{i,j}.route=[cell{i,j}.route,k];%æ·»åŠ çº¿è·¯åç§°
+                cell{i,j}.i_locate(cell{i,j}.route_num,1)=find(ismember(route(k,:),i));%å®šä½èµ·ç‚¹åœ¨çº¿è·¯ä¸­çš„ä½ç½®
+                cell{i,j}.j_locate(cell{i,j}.route_num,1)=find(ismember(route(k,:),j));%å®šä½ç»ˆç‚¹åœ¨çº¿è·¯ä¸­çš„ä½ç½®
+                if cell{i,j}.i_locate(cell{i,j}.route_num,1)<cell{i,j}.j_locate(cell{i,j}.route_num,1)%æ–¹å‘
+                    cell{i,j}.direction(cell{i,j}.route_num,1)=1;%ä¸Šè¡Œ
                 else
-                    cell{i,j}.direction(cell{i,j}.route_num,1)=-1;%ÏÂĞĞ
+                    cell{i,j}.direction(cell{i,j}.route_num,1)=-1;%ä¸‹è¡Œ
                 end
             end
         end
-        %==============¼ÆËãÃ¿¸öOD¼äµÄÊµ¼ÊÂ·¾¶==============
+        %==============è®¡ç®—æ¯ä¸ªODé—´çš„å®é™…è·¯å¾„==============
         cell{i,j}.real_route=zeros(cell{i,j}.route_num,num_station);
         for k=1:cell{i,j}.route_num
-            if cell{i,j}.direction(k)==1%ÉÏĞĞÊµ¼ÊµÄÂ·¾¶
+            if cell{i,j}.direction(k)==1%ä¸Šè¡Œå®é™…çš„è·¯å¾„
                 cell{i,j}.route_length(k)=size(route(cell{i,j}.route(k),cell{i,j}.i_locate(k,1):cell{i,j}.j_locate(k,1)),2);
                 cell{i,j}.real_route(k,1:cell{i,j}.route_length(k))=route(cell{i,j}.route(k),cell{i,j}.i_locate(k,1):cell{i,j}.j_locate(k,1));
-            elseif cell{i,j}.direction(k)==-1%ÏÂĞĞÊµ¼ÊµÄÂ·¾¶
+            elseif cell{i,j}.direction(k)==-1%ä¸‹è¡Œå®é™…çš„è·¯å¾„
                 cell{i,j}.route_length(k)=size(route(cell{i,j}.route(k),cell{i,j}.j_locate(k,1):cell{i,j}.i_locate(k,1)),2);
                 cell{i,j}.real_route(k,1:cell{i,j}.route_length(k))=route(cell{i,j}.route(k),cell{i,j}.j_locate(k,1):cell{i,j}.i_locate(k,1));
             end
         end
         if i~=j
-            %===========³õÊ¼»¯Ñ¡Ôñ¸ÅÂÊ,½»»¥·¶Î§=================
+            %===========åˆå§‹åŒ–é€‰æ‹©æ¦‚ç‡,äº¤äº’èŒƒå›´=================
             cell=rand_r_d_agent(cell,i,j,M,N_agent_length,interact_S);
-            %===========³õÊ¼»¯³öĞĞ·½Ê½¡¢Ê±¼äÑ¡Ôñ==========================
+            %===========åˆå§‹åŒ–å‡ºè¡Œæ–¹å¼ã€æ—¶é—´é€‰æ‹©==========================
             cell=route_departure_choice(cell,i,j,M,N_agent_length,t);
         end
     end
 end
-%==========================¿ªÊ¼Ñİ»¯=========================
+%==========================å¼€å§‹æ¼”åŒ–=========================
 while t<=t_T
     dt=1;
-    q=zeros(num_station,num_station,3,M);%Â·¶ÎÊµÊ±Á÷Á¿¾ØÕó
-    while dt<=M%Ã¿Ò»Ê±¼ä¶Î
+    q=zeros(num_station,num_station,3,M);%è·¯æ®µå®æ—¶æµé‡çŸ©é˜µ
+    while dt<=M%æ¯ä¸€æ—¶é—´æ®µ
         for i=1:num_station
             for j=1:num_station
                 if i~=j
-                    %=========Ñ¡ÔñË½¼Ò³µ³öĞĞµÄÈËÊı====================
+                    %=========é€‰æ‹©ç§å®¶è½¦å‡ºè¡Œçš„äººæ•°====================
                     cell{i,j}.car_q(dt)=OD(i,j)*numel(find(cell{i,j}.route_choice(:,t)==cell{i,j}.route_num+1&cell{i,j}.depart_choice(:,t)==dt))/N_agent_length;
                     
-                    %==========Ñ¡Ôñ¹«½»³öĞĞµÄÈËÊı=====================
+                    %==========é€‰æ‹©å…¬äº¤å‡ºè¡Œçš„äººæ•°=====================
                     for k=1:cell{i,j}.route_num
                         cell{i,j}.bus_q(k,dt)=OD(i,j)*numel(find(cell{i,j}.route_choice(:,t)==k&cell{i,j}.depart_choice(:,t)==dt))/N_agent_length;
                     end
-                    bus_q(i,j)=mean(cell{i,j}.bus_q(:,dt));%¼ì²éÊÕÁ²ĞÔ
-                    %===========¹ãÒå·ÑÓÃ£ºĞĞ³ÌÊ±¼ä¡¢µÈ´ıÊ±¼ä¡¢Æ±¼Û=================
+                    bus_q(i,j)=mean(cell{i,j}.bus_q(:,dt));%æ£€æŸ¥æ”¶æ•›æ€§
+                    %===========å¹¿ä¹‰è´¹ç”¨ï¼šè¡Œç¨‹æ—¶é—´ã€ç­‰å¾…æ—¶é—´ã€ç¥¨ä»·=================
                     for k=1:cell{i,j}.route_num
-                        cell{i,j}.dis(k)=0;%¾àÀë
-                        cell{i,j}.travel_time_0(k)=0;%ÁãÁ÷Ê±¼ä
-                        non_zero=cell{i,j}.real_route(k,(find(cell{i,j}.real_route(k,:)~=0)));%ÌáÈ¡Êµ¼ÊÏßÂ·
+                        cell{i,j}.dis(k)=0;%è·ç¦»
+                        cell{i,j}.travel_time_0(k)=0;%é›¶æµæ—¶é—´
+                        non_zero=cell{i,j}.real_route(k,(find(cell{i,j}.real_route(k,:)~=0)));%æå–å®é™…çº¿è·¯
                         for kk=1:length(non_zero)-1
-                            cell{i,j}.dis(k)=cell{i,j}.dis(k)+Dis(non_zero(kk),non_zero(kk+1));%ĞĞ³Ì¾àÀë
-                            cell{i,j}.travel_time_0(k)=cell{i,j}.travel_time_0(k)+TT(non_zero(kk),non_zero(kk+1));%ÁãÁ÷Ê±¼ä
+                            cell{i,j}.dis(k)=cell{i,j}.dis(k)+Dis(non_zero(kk),non_zero(kk+1));%è¡Œç¨‹è·ç¦»
+                            cell{i,j}.travel_time_0(k)=cell{i,j}.travel_time_0(k)+TT(non_zero(kk),non_zero(kk+1));%é›¶æµæ—¶é—´
                         end
                         if t==1
                             cell{i,j}.travel_time(k,dt)=cell{i,j}.travel_time_0(k);
                         else
-                            cell{i,j}.travel_time(k,dt)=cell{i,j}.travel_time_0(k)*(1+0.15*(cell{i,j}.bus_crowd(k,dt)/capacity)^4);%ĞĞ³ÌÊ±¼ä
+                            cell{i,j}.travel_time(k,dt)=cell{i,j}.travel_time_0(k)*(1+0.15*(cell{i,j}.bus_crowd(k,dt)/capacity)^4);%è¡Œç¨‹æ—¶é—´
                         end
-                        cell{i,j}.bus_fare(k,dt)=p_route(k,dt)*cell{i,j}.dis(k);%¹«½»·ÖÊ±Æ±¼Û
-                        cell{i,j}.bus_wait_time(k)=1/f_route(cell{i,j}.route(k));%¹«½»µÈ´ıÊ±¼ä
+                        cell{i,j}.bus_fare(k,dt)=p_route(k,dt)*cell{i,j}.dis(k);%å…¬äº¤åˆ†æ—¶ç¥¨ä»·
+                        cell{i,j}.bus_wait_time(k)=1/f_route(cell{i,j}.route(k));%å…¬äº¤ç­‰å¾…æ—¶é—´
                     end
-                    dt_arr=dt+floor(min(cell{i,j}.travel_time(:,dt))/10);%µ½´ïºó¸¶Í£³µ·Ñ
+                    dt_arr=dt+floor(min(cell{i,j}.travel_time(:,dt))/10);%åˆ°è¾¾åä»˜åœè½¦è´¹
                     if dt_arr>M
                         dt_arr=M;
                     end
-                    cell{i,j}.car_fare(dt)=p_park(dt);%Í£³µ·Ñ
-                    %=========Ë½¼Ò³µ¹ãÒå·ÑÓÃ=================
+                    cell{i,j}.car_fare(dt)=p_park(dt);%åœè½¦è´¹
+                    %=========ç§å®¶è½¦å¹¿ä¹‰è´¹ç”¨=================
                     cell{i,j}.car_fee(dt)=kesei*min(cell{i,j}.travel_time(:,dt))+kesei*cell{i,j}.car_fare(dt);
-                    %========¹«½»³µ¹ãÒå·ÑÓÃ==================
+                    %========å…¬äº¤è½¦å¹¿ä¹‰è´¹ç”¨==================
                     for k=1:cell{i,j}.route_num
                         if t==1
                             cell{i,j}.bus_fee(k,dt)=kesei*cell{i,j}.travel_time(k,dt)+kesei*cell{i,j}.bus_wait_time(k)+kesei*cell{i,j}.bus_fare(k,dt);
@@ -167,22 +137,22 @@ while t<=t_T
                             cell{i,j}.bus_fee(k,dt)=kesei*cell{i,j}.travel_time(k,dt)+kesei*cell{i,j}.bus_wait_time(k)+kesei*cell{i,j}.bus_fare(k,dt)+kesei*cell{i,j}.bus_crowd(k,dt)/(f_route(cell{i,j}.route(k))*capacity_bus);
                         end
                     end
-                    %========³ö·¢Ê±¼äĞ§ÓÃ===================
+                    %========å‡ºå‘æ—¶é—´æ•ˆç”¨===================
                     cell{i,j}.departure_fee(dt)=sue_fee_dd(cell,i,j,tte,tta,dt);
                     
                 end
                 
             end
         end
-        %============¼ì²éÊÕÁ²ĞÔ==============
+        %============æ£€æŸ¥æ”¶æ•›æ€§==============
         if t==1
             q_var(t)=0;
         else
-            bus_qq(t)=mean(mean(bus_q(:,:)));%¼ì²éÊÕÁ²ĞÔ
-            q_var(t)=abs(bus_qq(t)-bus_qq(t-1))/max(bus_qq(1:t));%¼ì²éÊÕÁ²ĞÔ
+            bus_qq(t)=mean(mean(bus_q(:,:)));%æ£€æŸ¥æ”¶æ•›æ€§
+            q_var(t)=abs(bus_qq(t)-bus_qq(t-1))/max(bus_qq(1:t));%æ£€æŸ¥æ”¶æ•›æ€§
         end
-        %=============¼ÆËãÃ¿ÌõÏßÂ·µÄÊ¹ÓÃÇé¿ö(¸üĞÂÊµÊ±Â·¶ÎÁ÷Á¿)===============
-        q=zeros(num_station,num_station,3,M);%3ÌõÏßÂ·£¬5¸ö³ö·¢Ê±¼ä
+        %=============è®¡ç®—æ¯æ¡çº¿è·¯çš„ä½¿ç”¨æƒ…å†µ(æ›´æ–°å®æ—¶è·¯æ®µæµé‡)===============
+        q=zeros(num_station,num_station,3,M);%3æ¡çº¿è·¯ï¼Œ5ä¸ªå‡ºå‘æ—¶é—´
         for ii=1:num_station
             for jj=1:num_station
                 for k=1:3
@@ -193,8 +163,8 @@ while t<=t_T
                             q(ii,jj,k,dt)=0;
                         else
                             q(ii,jj,k,dt)=cell{ii,jj}.bus_q(find(cell{ii,jj}.route==k),dt);
-                            %===========ºóĞø³ÖĞøÕ¼ÓÃÂ·¾¶==============
-                            travel_time_int=floor(cell{ii,jj}.travel_time(find(cell{ii,jj}.route==k),dt)/10);%ĞĞ³ÌÊ±¼äÈ¡Õû
+                            %===========åç»­æŒç»­å ç”¨è·¯å¾„==============
+                            travel_time_int=floor(cell{ii,jj}.travel_time(find(cell{ii,jj}.route==k),dt)/10);%è¡Œç¨‹æ—¶é—´å–æ•´
                             for iii=1:travel_time_int
                                 if dt+iii<=M
                                     q(ii,jj,k,dt+iii)=cell{ii,jj}.bus_q(find(cell{ii,jj}.route==k),dt);
@@ -205,11 +175,11 @@ while t<=t_T
                 end
             end
         end
-        %===========¼ÆËãÃ¿¸öÂ·¶ÎµÄÓµ¼·³Ì¶È£¨ÉÏĞĞ£©================
+        %===========è®¡ç®—æ¯ä¸ªè·¯æ®µçš„æ‹¥æŒ¤ç¨‹åº¦ï¼ˆä¸Šè¡Œï¼‰================
         for k=1:size(route,1)
             for ii=1:size(route,2)-1
                 if route(k,ii)*route(k,ii+1)==0
-                    crowd(k,ii,dt,1)=0;%ÉÏĞĞ
+                    crowd(k,ii,dt,1)=0;%ä¸Šè¡Œ
                 else
                     if ii==1
                         crowd(k,ii,dt,1)=0;
@@ -236,11 +206,11 @@ while t<=t_T
                 end
             end
         end
-        %===========¼ÆËãÃ¿¸öÂ·¶ÎµÄÓµ¼·³Ì¶È£¨ÏÂĞĞ£©================
+        %===========è®¡ç®—æ¯ä¸ªè·¯æ®µçš„æ‹¥æŒ¤ç¨‹åº¦ï¼ˆä¸‹è¡Œï¼‰================
         for k=1:size(route,1)
             for ii=size(route,2):-1:2
                 if route(k,ii)*route(k,ii-1)==0
-                    crowd(k,ii-1,dt,2)=0;%ÏÂĞĞ
+                    crowd(k,ii-1,dt,2)=0;%ä¸‹è¡Œ
                 else
                     if ii==size(route,2)
                         crowd(k,ii-1,dt,2)=0;
@@ -269,7 +239,7 @@ while t<=t_T
                 end
             end
         end
-        %==================¼ÆËãÃ¿¸öOD¼äµÄÓµ¼·¶È===================
+        %==================è®¡ç®—æ¯ä¸ªODé—´çš„æ‹¥æŒ¤åº¦===================
         for i=1:num_station
             for j=1:num_station
                 for k=1:cell{i,j}.route_num
@@ -284,7 +254,7 @@ while t<=t_T
         
         dt=dt+1;
     end
-    %=======================¸üĞÂÂ·¾¶¼°³ö·¢Ê±¼äÑ¡Ôñ¸ÅÂÊ================
+    %=======================æ›´æ–°è·¯å¾„åŠå‡ºå‘æ—¶é—´é€‰æ‹©æ¦‚ç‡================
     for i=1:num_station
         for j=1:num_station
             if i~=j
@@ -296,24 +266,24 @@ while t<=t_T
     
     t=t+1;
 end
-% f(1)%Ä¿±êº¯Êı1£ºÆ±¼Û¡¢Í£³µ·ÑÊÕÈë×î´ó»¯
-% f(2)%Ä¿±êº¯Êı2£º³öĞĞ¹ãÒå·ÑÓÃ×îĞ¡»¯
+% f(1)%ç›®æ ‡å‡½æ•°1ï¼šç¥¨ä»·ã€åœè½¦è´¹æ”¶å…¥æœ€å¤§åŒ–
+% f(2)%ç›®æ ‡å‡½æ•°2ï¼šå‡ºè¡Œå¹¿ä¹‰è´¹ç”¨æœ€å°åŒ–
 for i=1:num_station
     for j=1:num_station
         if i~=j
             for dt=1:M
                 for k=1:cell{i,j}.route_num
                     profit_bus(k,dt)=cell{i,j}.bus_fare(k,dt)*cell{i,j}.bus_q(k,dt)-f_route(cell{i,j}.route(k))*10;
-                    g_fee_bus(k)=cell{i,j}.bus_fee(k,dt)*cell{i,j}.bus_q(k,dt);%³öĞĞ·½Ê½Ğ§ÓÃ
-                    g_fee_bus(k)=(cell{i,j}.bus_fee(k,dt)+cell{i,j}.departure_fee(dt))*cell{i,j}.bus_q(k,dt);%³öĞĞ·½Ê½Ğ§ÓÃ+³ö·¢Ê±¼äĞ§ÓÃ
+                    g_fee_bus(k)=cell{i,j}.bus_fee(k,dt)*cell{i,j}.bus_q(k,dt);%å‡ºè¡Œæ–¹å¼æ•ˆç”¨
+                    g_fee_bus(k)=(cell{i,j}.bus_fee(k,dt)+cell{i,j}.departure_fee(dt))*cell{i,j}.bus_q(k,dt);%å‡ºè¡Œæ–¹å¼æ•ˆç”¨+å‡ºå‘æ—¶é—´æ•ˆç”¨
                     g_travel_time(k)=cell{i,j}.travel_time(k,dt);
                 end
                 profit_car(dt)=cell{i,j}.car_fare(dt)*cell{i,j}.car_q(dt);
-                g_fee_car(dt)=cell{i,j}.car_fee(dt)*cell{i,j}.car_q(dt);%³öĞĞ·½Ê½Ğ§ÓÃ
-                g_fee_car(dt)=(cell{i,j}.car_fee(dt)+cell{i,j}.departure_fee(dt))*cell{i,j}.car_q(dt);%³öĞĞ·½Ê½Ğ§ÓÃ+³ö·¢Ê±¼äĞ§ÓÃ
+                g_fee_car(dt)=cell{i,j}.car_fee(dt)*cell{i,j}.car_q(dt);%å‡ºè¡Œæ–¹å¼æ•ˆç”¨
+                g_fee_car(dt)=(cell{i,j}.car_fee(dt)+cell{i,j}.departure_fee(dt))*cell{i,j}.car_q(dt);%å‡ºè¡Œæ–¹å¼æ•ˆç”¨+å‡ºå‘æ—¶é—´æ•ˆç”¨
             end
-            profit(i,j)=sum(sum(profit_bus(:,:)))+sum(profit_car(:));%Æ±¼Û¡¢Í£³µ·ÑÊÕÈë
-            g_fee(i,j)=sum(sum(g_fee_bus(:,:)))+sum(g_fee_car(:));%³öĞĞ¹ãÒå·ÑÓÃ
+            profit(i,j)=sum(sum(profit_bus(:,:)))+sum(profit_car(:));%ç¥¨ä»·ã€åœè½¦è´¹æ”¶å…¥
+            g_fee(i,j)=sum(sum(g_fee_bus(:,:)))+sum(g_fee_car(:));%å‡ºè¡Œå¹¿ä¹‰è´¹ç”¨
             bus_travel_time(i,j)=mean(g_travel_time(:,:));
         else
             profit(i,j)=0;
@@ -323,5 +293,5 @@ for i=1:num_station
     end
 end
 mean_bus_travel_time=mean(mean(bus_travel_time));
-f(1)=-mean(mean(profit));%Ä¿±êº¯Êı1£ºÆ±¼Û¡¢Í£³µ·ÑÊÕÈë×î´ó»¯
-f(2)=mean(mean(g_fee));%Ä¿±êº¯Êı2£º³öĞĞ¹ãÒå·ÑÓÃ×îĞ¡»¯
+f(1)=-mean(mean(profit));%ç›®æ ‡å‡½æ•°1ï¼šç¥¨ä»·ã€åœè½¦è´¹æ”¶å…¥æœ€å¤§åŒ–
+f(2)=mean(mean(g_fee));%ç›®æ ‡å‡½æ•°2ï¼šå‡ºè¡Œå¹¿ä¹‰è´¹ç”¨æœ€å°åŒ–
